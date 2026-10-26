@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+dist/
+build/
+*.egg-info/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+secrets.toml
+
+# FastAPI / Database / Logs
+*.log
+*.sqlite3
+db.sqlite3
+db.sqlite3-journal
+
+# Testing and Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
