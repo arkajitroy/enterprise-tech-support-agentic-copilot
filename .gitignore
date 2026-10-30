@@ -38,6 +38,12 @@ htmlcov/
 *.swp
 *.swo
 
+# Uploads (user documents — never commit)
+src/uploads/*
+!src/uploads/.gitkeep
+uploads/*
+!uploads/.gitkeep
+
 # OS generated files
 .DS_Store
 Thumbs.db
