@@ -4,12 +4,16 @@ An end-to-end **Forward Deployed Engineer (FDE) project** that turns a notebook-
 
 ---
 
+![Demonstration](.github\Demonstration.png)
+
 ## 1. Business Problem
 
 ### Customer
+
 **NovaRetail**, a fictional 3,000-employee retail company.
 
 ### Problem
+
 The internal IT team maintains many documents: VPN instructions, password rules, MFA policy, software installation rules, laptop troubleshooting guides, and service-desk runbooks.
 
 Employees still create repetitive support tickets because:
@@ -21,6 +25,7 @@ Employees still create repetitive support tickets because:
 - Some questions require current vendor information from the public web.
 
 ### Example
+
 An employee asks:
 
 > **“How do I connect to the company VPN from home?”**
@@ -34,6 +39,7 @@ Another employee asks:
 The internal KB may not contain current outage information. The system should recognize weak private evidence, use an external search, grade that evidence, and answer with an external-source warning.
 
 ### Business Goal
+
 Build a secure IT Support Copilot that:
 
 1. Searches trusted private knowledge first.
@@ -182,17 +188,17 @@ The system therefore controls **what to do next** based on its current state.
 
 ## 5. Main Technology Stack
 
-| Layer | Technology | Purpose |
-|---|---|---|
-| Agent workflow | LangGraph | Stateful routing and conditional decisions |
-| LLM | Groq | Routing, grading, rewriting, answer generation |
-| Embeddings | HuggingFace `all-MiniLM-L6-v2` | Local 384-dimensional embeddings |
-| Vector DB | Pinecone | Private enterprise knowledge base |
-| External search | Tavily | Fallback when company KB is insufficient |
-| API | FastAPI | Backend and REST endpoints |
-| Frontend | HTML/CSS/JavaScript | Employee-facing interface |
-| Audit | SQLite | Basic decision-path logging |
-| Packaging | Docker | Reproducible deployment |
+| Layer           | Technology                     | Purpose                                        |
+| --------------- | ------------------------------ | ---------------------------------------------- |
+| Agent workflow  | LangGraph                      | Stateful routing and conditional decisions     |
+| LLM             | Groq                           | Routing, grading, rewriting, answer generation |
+| Embeddings      | HuggingFace `all-MiniLM-L6-v2` | Local 384-dimensional embeddings               |
+| Vector DB       | Pinecone                       | Private enterprise knowledge base              |
+| External search | Tavily                         | Fallback when company KB is insufficient       |
+| API             | FastAPI                        | Backend and REST endpoints                     |
+| Frontend        | HTML/CSS/JavaScript            | Employee-facing interface                      |
+| Audit           | SQLite                         | Basic decision-path logging                    |
+| Packaging       | Docker                         | Reproducible deployment                        |
 
 ---
 
@@ -303,19 +309,19 @@ APP_ENV=development
 
 #### Environment Variable Reference
 
-| Variable | Description | Example | Required |
-|---|---|---|---|
-| `GROQ_API_KEY` | API key for Groq LLM (routing, grading, generation) | `gsk_...` | ✅ Yes |
-| `OPENAI_API_KEY` | API key for OpenAI (embeddings and fallback LLM) | `sk-...` | ✅ Yes |
-| `TAVILY_API_KEY` | API key for Tavily web search | `tvly-...` | ✅ Yes |
-| `PINECONE_API_KEY` | API key for Pinecone vector database | `pckey-...` | ✅ Yes |
-| `PINECONE_INDEX_NAME` | Pinecone index name | `fde-it-support-rag` | ⚠️ Optional (default: `fde-it-support-rag`) |
-| `PINECONE_NAMESPACE` | Pinecone namespace for document isolation | `company-it-kb` | ⚠️ Optional (default: `company-it-kb`) |
-| `GROQ_MODEL` | Groq model identifier | `openai/gpt-oss-20b` | ⚠️ Optional (default: `openai/gpt-oss-20b`) |
-| `OPENAI_MODEL` | OpenAI model identifier | `gpt-4o-mini` | ⚠️ Optional (default: `gpt-4o-mini`) |
-| `EMBEDDING_MODEL` | Embedding model for vectorization | `text-embedding-3-small` | ⚠️ Optional (default: `text-embedding-3-small`) |
-| `ADMIN_API_KEY` | Secret key for admin endpoints (document ingestion) | `your-secure-key` | ⚠️ Optional (default: `change-me`) |
-| `APP_ENV` | Application environment | `development` or `production` | ⚠️ Optional (default: `development`) |
+| Variable              | Description                                         | Example                       | Required                                        |
+| --------------------- | --------------------------------------------------- | ----------------------------- | ----------------------------------------------- |
+| `GROQ_API_KEY`        | API key for Groq LLM (routing, grading, generation) | `gsk_...`                     | ✅ Yes                                          |
+| `OPENAI_API_KEY`      | API key for OpenAI (embeddings and fallback LLM)    | `sk-...`                      | ✅ Yes                                          |
+| `TAVILY_API_KEY`      | API key for Tavily web search                       | `tvly-...`                    | ✅ Yes                                          |
+| `PINECONE_API_KEY`    | API key for Pinecone vector database                | `pckey-...`                   | ✅ Yes                                          |
+| `PINECONE_INDEX_NAME` | Pinecone index name                                 | `fde-it-support-rag`          | ⚠️ Optional (default: `fde-it-support-rag`)     |
+| `PINECONE_NAMESPACE`  | Pinecone namespace for document isolation           | `company-it-kb`               | ⚠️ Optional (default: `company-it-kb`)          |
+| `GROQ_MODEL`          | Groq model identifier                               | `openai/gpt-oss-20b`          | ⚠️ Optional (default: `openai/gpt-oss-20b`)     |
+| `OPENAI_MODEL`        | OpenAI model identifier                             | `gpt-4o-mini`                 | ⚠️ Optional (default: `gpt-4o-mini`)            |
+| `EMBEDDING_MODEL`     | Embedding model for vectorization                   | `text-embedding-3-small`      | ⚠️ Optional (default: `text-embedding-3-small`) |
+| `ADMIN_API_KEY`       | Secret key for admin endpoints (document ingestion) | `your-secure-key`             | ⚠️ Optional (default: `change-me`)              |
+| `APP_ENV`             | Application environment                             | `development` or `production` | ⚠️ Optional (default: `development`)            |
 
 **⚠️ Important Security Notes:**
 
@@ -513,7 +519,7 @@ Request:
 
 ```json
 {
-  "question": "How do I reset my company password?"
+    "question": "How do I reset my company password?"
 }
 ```
 
@@ -521,15 +527,15 @@ Response contains:
 
 ```json
 {
-  "answer": "...",
-  "source_used": "private_kb",
-  "trace": [
-    "Router → KB",
-    "Private KB retrieval → 4 chunks",
-    "KB evidence grade → GOOD",
-    "Answer generation → PRIVATE KB"
-  ],
-  "citations": []
+    "answer": "...",
+    "source_used": "private_kb",
+    "trace": [
+        "Router → KB",
+        "Private KB retrieval → 4 chunks",
+        "KB evidence grade → GOOD",
+        "Answer generation → PRIVATE KB"
+    ],
+    "citations": []
 }
 ```
 
@@ -540,4 +546,3 @@ Protected by the `X-Admin-Key` request header.
 Uploads a document and adds its chunks to Pinecone.
 
 ---
-
