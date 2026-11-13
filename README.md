@@ -4,7 +4,7 @@ An end-to-end **Forward Deployed Engineer (FDE) project** that turns a notebook-
 
 ---
 
-![Demonstration](.github\Demonstration.png)
+![Demonstration](.github/Demonstration.png)
 
 ## 1. Business Problem
 
